@@ -1,5 +1,5 @@
 {
-  "id": "a0497e45-6cd6-40e7-97ca-bcef7cc362bf",
+  "id": "467dd308-b2c5-4d64-89ce-271bf05bd3e2",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "6",
   "dialect": "postgresql",
@@ -88,7 +88,7 @@
           "name": "description",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "manager_id": {
           "name": "manager_id",
@@ -128,12 +128,61 @@
         }
       },
       "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.auth_links": {
+      "name": "auth_links",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "code": {
+          "name": "code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "auth_links_user_id_users_id_fk": {
+          "name": "auth_links_user_id_users_id_fk",
+          "tableFrom": "auth_links",
+          "tableTo": "users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "restaurants_description_unique": {
-          "name": "restaurants_description_unique",
+        "auth_links_code_unique": {
+          "name": "auth_links_code_unique",
           "nullsNotDistinct": false,
           "columns": [
-            "description"
+            "code"
           ]
         }
       }

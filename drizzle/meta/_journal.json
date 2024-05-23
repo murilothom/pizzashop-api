@@ -5,15 +5,8 @@
     {
       "idx": 0,
       "version": "6",
-      "when": 1716424040924,
-      "tag": "0000_dashing_stellaris",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "6",
-      "when": 1716425835386,
-      "tag": "0001_rich_randall",
+      "when": 1716429533487,
+      "tag": "0000_rich_tag",
       "breakpoints": true
     }
   ]
