@@ -15,6 +15,13 @@
       "when": 1716495457174,
       "tag": "0001_gray_red_wolf",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1716547959320,
+      "tag": "0002_smiling_black_cat",
+      "breakpoints": true
     }
   ]
 }
