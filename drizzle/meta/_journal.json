@@ -22,6 +22,13 @@
       "when": 1716547959320,
       "tag": "0002_smiling_black_cat",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1716550949554,
+      "tag": "0003_mute_iron_patriot",
+      "breakpoints": true
     }
   ]
 }
