@@ -9,7 +9,7 @@ import { and, eq, gte, sql, sum } from 'drizzle-orm'
 export const getMonthRevenue = new Elysia()
   .use(auth)
   .get('/metrics/month-revenue', async ({ getCurrentUser }) => {
-    const { userId, restaurantId } = await getCurrentUser()
+    const { restaurantId } = await getCurrentUser()
 
     if (!restaurantId) {
       throw new UnauthorizedError()
