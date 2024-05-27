@@ -4,7 +4,7 @@ import { UnauthorizedError } from '../errors/unauthorized-error'
 import dayjs from 'dayjs'
 import { db } from '../../db/connection'
 import { orders } from '../../db/schema'
-import { and, count, eq, gte, sql, sum } from 'drizzle-orm'
+import { and, count, eq, gte, sql } from 'drizzle-orm'
 
 export const getDayOrdersAmount = new Elysia()
   .use(auth)
@@ -19,7 +19,7 @@ export const getDayOrdersAmount = new Elysia()
     const yesterday = today.subtract(1, 'day')
     const startOfYesteday = yesterday.startOf('day')
 
-    const orderPerDay = await db
+    const ordersPerDay = await db
       .select({
         dayWithMonthAndYear: sql<string>`TO_CHAR(${orders.createdAt}, 'YYYY-MM-DD')`,
         amount: count(),
@@ -36,11 +36,11 @@ export const getDayOrdersAmount = new Elysia()
     const todayWithMonthAndYear = today.format('YYYY-MM-DD')
     const yesterdayWithMonthAndYear = yesterday.format('YYYY-MM-DD')
 
-    const todayOrdersAmount = orderPerDay.find((orderPerDay) => {
+    const todayOrdersAmount = ordersPerDay.find((orderPerDay) => {
       return orderPerDay.dayWithMonthAndYear === todayWithMonthAndYear
     })
 
-    const yesterdayOrdersAmount = orderPerDay.find((orderPerDay) => {
+    const yesterdayOrdersAmount = ordersPerDay.find((orderPerDay) => {
       return orderPerDay.dayWithMonthAndYear === yesterdayWithMonthAndYear
     })
 
