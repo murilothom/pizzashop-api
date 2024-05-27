@@ -44,7 +44,13 @@ export const getOrders = new Elysia().use(auth).get(
         .limit(10)
         .orderBy((fields) => {
           return [
-            // sql``,
+            sql`CASE ${fields.status}
+              WHEN 'pending' THEN 1
+              WHEN 'processing' THEN 2
+              WHEN 'delivering' THEN 3
+              WHEN 'delivered' THEN 4
+              WHEN 'canceled' THEN 99
+            END`,
             desc(fields.createdAt),
           ]
         }),
