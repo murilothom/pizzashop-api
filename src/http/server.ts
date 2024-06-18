@@ -1,4 +1,6 @@
 import { Elysia } from 'elysia'
+import { cors } from '@elysiajs/cors'
+
 import { registerRestaurant } from './routes/register-restaurant'
 import { sendAuthLink } from './routes/send-auth-link'
 import { authenticateFromLink } from './routes/authenticate-from-link'
@@ -17,13 +19,23 @@ import { getMonthOrdersAmount } from './routes/get-mount-orders-amount'
 import { getMonthCanceledOrdersAmount } from './routes/get-month-canceled-orders-amount'
 import { getPopularProducts } from './routes/get-popuplar-products'
 import { getDailyRevenueInPeriod } from './routes/get-daily-revenue-in-period'
+import { updateProfile } from './routes/update-profile'
 
 const app = new Elysia()
+  .use(
+    cors({
+      origin: true,
+      credentials: true,
+      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+      allowedHeaders: ['Content-Type', 'Authorization'],
+    }),
+  )
   .use(registerRestaurant)
   .use(sendAuthLink)
   .use(authenticateFromLink)
   .use(signOut)
   .use(getProfile)
+  .use(updateProfile)
   .use(getManagedRestaurant)
   .use(getOrderDetails)
   .use(approveOrder)

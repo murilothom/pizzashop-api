@@ -24,6 +24,7 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "@elysiajs/cors": "^1.0.2",
     "@elysiajs/jwt": "^1.0.2",
     "@paralleldrive/cuid2": "^2.2.2",
     "dayjs": "^1.11.11",
