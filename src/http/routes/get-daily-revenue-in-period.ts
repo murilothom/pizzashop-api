@@ -4,7 +4,7 @@ import { UnauthorizedError } from '../errors/unauthorized-error'
 import dayjs from 'dayjs'
 import { db } from '../../db/connection'
 import { orders } from '../../db/schema'
-import { and, count, eq, gte, lte, sql, sum } from 'drizzle-orm'
+import { and, eq, gte, lte, sql, sum } from 'drizzle-orm'
 
 export const getDailyRevenueInPeriod = new Elysia().use(auth).get(
   '/metrics/daily-revenue-in-period',

@@ -51,13 +51,14 @@ const app = new Elysia()
   .use(getDailyRevenueInPeriod)
   .onError(({ code, error, set }) => {
     switch (code) {
-      case 'VALIDATION':
+      case 'VALIDATION': {
         set.status = error.status
+
         return error.toResponse()
-
-      case 'NOT_FOUND':
+      }
+      case 'NOT_FOUND': {
         return new Response(null, { status: 404 })
-
+      }
       default: {
         console.error(error)
 
